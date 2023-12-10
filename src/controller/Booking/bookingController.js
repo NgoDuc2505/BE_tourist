@@ -35,6 +35,7 @@ const findById= async (id)=>{
     }
 }
 
+
 const getAllBooking = async(req,res)=>{
     try{
         const list = await prisma.booking.findMany({
@@ -53,8 +54,7 @@ const sendBooking = async (req,res) => {
         const {name,dayOfBirth,idNum,phone,location,numDays,dateDep} = req.body;
         console.log("54",req.body)
         const isExit = await findExitId(idNum);
-        console.log("tontai",isExit);
-        if(!isExit){
+        if(isExit){
             const postBooking = await prisma.booking.create({
                 data:{
                     nameF : name,
@@ -70,7 +70,6 @@ const sendBooking = async (req,res) => {
                 status: "success",
                 data : postBooking,
             }
-            console.log(responseData)
             success(res,responseData,"Booking thanh cong!");
         }else{
             failed(res,"That bai! trung ID");
