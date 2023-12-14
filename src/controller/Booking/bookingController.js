@@ -45,6 +45,7 @@ const getAllBooking = async(req,res)=>{
         });
         success(res,list,"Thanh cong !");
     }catch(err){
+        console.log(err);
         server(res);
     }
 }
@@ -151,8 +152,8 @@ const findBookingByName = async (req,res) => {
 
 const findBookingByID = async (req,res) => {
     try{
-        const {ID} = req.body;
-        const result = await findById(ID);
+        const {idNum} = req.params;
+        const result = await findById(idNum);
         if(result){
             success(res,result,"Tim thay"); 
             return 0;

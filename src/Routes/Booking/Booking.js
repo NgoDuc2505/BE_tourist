@@ -8,6 +8,6 @@ bookingRoute.post("/bookingNow", sendBooking);
 bookingRoute.delete("/delBooking/:idNum", deleteBooking);
 bookingRoute.put("/updateBooking/:idNum", updateBooking);
 bookingRoute.get("/findByName", findBookingByName);
-bookingRoute.get("/findID", findBookingByID);
+bookingRoute.get("/findID/:idNum", findBookingByID);
 
 export default bookingRoute;
